@@ -1,5 +1,6 @@
 import axios from 'axios'
-import {CategoriesAPIResponseSchema} from '../utils/recipies-schema'
+import {CategoriesAPIResponseSchema, DrinksAPIResponse} from '../utils/recipies-schema'
+import { SearchFiltrer } from '../types'
 
 export async function getCategories(){
     //url de la api
@@ -11,6 +12,15 @@ export async function getCategories(){
     //si cumple con el esquema
     if(result.success){
         return result.data   
-    }    
-    
+    }       
+}
+
+//obtener la receta 
+export async function getRecipies(filters:SearchFiltrer){
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${filters.category}&i=${filters.ingredient}`
+    const {data} = await axios(url)
+    const result = DrinksAPIResponse.safeParse(data)
+    if(result.success){
+      return  result.data
+    }   
 }

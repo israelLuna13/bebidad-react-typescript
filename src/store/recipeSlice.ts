@@ -1,16 +1,22 @@
 import { StateCreator } from "zustand"
-import {getCategories} from "../services/RecipeService"
-import { Categories } from "../types"
+import {getCategories, getRecipies} from "../services/RecipeService"
+import { Categories, Drinks, SearchFiltrer } from "../types"
 
+//types de los state y las acciones
 export type RecipeSliceType={
+    drinks:Drinks
     categories:Categories,
-    fetchCategories: () => Promise<void>
+    fetchCategories: () => Promise<void>,
+    searchRecipies: (SearchFiltrer:SearchFiltrer) => Promise<void>
 }
 
 //creamos el state y le damos su tipo de dato
 export const createRecipesSlice:StateCreator<RecipeSliceType> = (set) =>({
-    //state
+    //state inicial
     categories:{
+        drinks:[]
+    },
+    drinks:{
         drinks:[]
     },
 
@@ -22,8 +28,14 @@ export const createRecipesSlice:StateCreator<RecipeSliceType> = (set) =>({
         //escribimos en el state
         set({
             categories
-        })
-        console.log(categories);
-    
+        })    
+    },
+
+    //obtenemos las recetas
+    searchRecipies:async(filters)=>{
+      const drinks =   await getRecipies(filters)
+      //escribimos en el state
+      set({drinks})
+      
     }
 })
