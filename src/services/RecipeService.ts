@@ -24,12 +24,11 @@ export async function getRecipies(filters:SearchFiltrer){
       return  result.data
     }   
 }
-
+//obtener los ingredientes , forma de prepara de una bebida
 export async function getRecipeById(id:Drink['idDrink']){
 
     const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
     const {data}=await axios(url)
-    
     const result = RecipeAPIResponseSchema.safeParse(data.drinks[0])
     if(result.success){
         return result.data

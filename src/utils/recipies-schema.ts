@@ -20,10 +20,11 @@ export const DrinkAPIResponse = z.object({
     strDrinkThumb:z.string(),
     
 })
-//estructura de la respuesta
+//estructura de la respuesta, bebida
 export const DrinksAPIResponse = z.object({
     drinks:z.array(DrinkAPIResponse)
 })
+//estructura de la receta , forma de preparar la bebida
 export const RecipeAPIResponseSchema = z.object({
     idDrink: z.string(),
     strDrink: z.string(),
