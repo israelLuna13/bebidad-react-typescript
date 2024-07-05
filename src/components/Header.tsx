@@ -15,24 +15,28 @@ export default function Header() {
   const fetchCategories = useAppStore((state)=>state.fetchCategories)
   const categorias =useAppStore((state)=>state.categories)
   const searchRecipies =useAppStore((state)=>state.searchRecipies)
+  const showNotificacion =useAppStore((state)=>state.showNotification)
 
   useEffect(() => {
     fetchCategories();
 }, []); // solo se llama una vez al montar el componente
 
 
+//validamos los campos del formulario
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
     //validar 
     if(Object.values(searchFiltres).includes(''))
     {
-      console.log('Todos los campos son obligatorios');
+      //mostramos la notificacion
+      showNotificacion({
+        text:'Todos los campos son obligatorios',
+        error:true
+      })
       return
     }
-
     //consultar las recetas y le pasamos nuestro state
     searchRecipies(searchFiltres)
-
   }
 
   //escribimos en el state cuado se escriba algo en los inputs
