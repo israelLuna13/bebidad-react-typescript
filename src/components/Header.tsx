@@ -58,7 +58,10 @@ export default function Header() {
             {/* con navLink detectamos cual vista esta activa  */}
             <NavLink  to="/" className={({ isActive }) => isActive ? "text-orange-500 uppercase font-bold" : " text-white uppercase font-bold"} >  Inicio </NavLink>
             <NavLink to="/favoritos"  className={({ isActive }) => isActive ? "text-orange-700 uppercase font-bold" : "text-white uppercase font-bold" }> Favoritos </NavLink>
+<<<<<<< HEAD
              <NavLink to="/generate"  className={({ isActive }) => isActive ? "text-orange-700 uppercase font-bold" : "text-white uppercase font-bold" }> Generar con IA </NavLink>
+=======
+>>>>>>> 5d4a34a43f783bc6dbc6c79871fa51a3946c0a26
           </nav>
         </div>
 

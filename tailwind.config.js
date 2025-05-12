@@ -8,6 +8,7 @@ export default {
     extend: {
       backgroundImage:{
         "header":"url('/bg.jpg')"
+<<<<<<< HEAD
       },
       animation:{
         blink:'blink 1s ease-in-out infinite'
@@ -25,6 +26,8 @@ export default {
           }
         }
 
+=======
+>>>>>>> 5d4a34a43f783bc6dbc6c79871fa51a3946c0a26
       }
     },
   },
